@@ -22,10 +22,8 @@ int main(int argc, char *argv[]) {
       i++;
     }
     command[i] = '\0';
-    strncpy(arguments, &command_buffer[i], sizeof(arguments) - 1);
+    strncpy(arguments, &command_buffer[i + 1], sizeof(arguments) - 1);
     arguments[strcspn(command_buffer, "\n")] = '\0';
-    // printf("Command: %s\n", command);
-    // printf("Arguments: %s\n", arguments);
     if(strncmp(command, "exit", 4) == 0) {
       break;
     } else if (strncmp(command, "echo", 4) == 0) {
@@ -33,17 +31,6 @@ int main(int argc, char *argv[]) {
     }else{
       printf("%s: command not found \n", command_buffer);
     }
-    //parse the command
-    // int i = 0;
-    // while(command_buffer[i] != '\0') {
-    //   if (command_buffer[i] != ' ') {
-    //     char *args[10];
-
-    //     args[0] = command_buffer;
-    //     args[1] = &command_buffer[i + 1];
-    //   }
-    //   i++;
-    // }
   }
 
   return 0;
