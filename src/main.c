@@ -28,6 +28,8 @@ int main(int argc, char *argv[]) {
       break;
     } else if (strncmp(command, "echo", 4) == 0) {
       printf("%s", arguments);
+      free(arguments);
+      free(command);
     }else{
       printf("%s: command not found \n", command_buffer);
     }
