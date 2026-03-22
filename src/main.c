@@ -23,13 +23,10 @@ int main(int argc, char *argv[]) {
     }
     command[i] = '\0';
     strncpy(arguments, &command_buffer[i + 1], sizeof(arguments) - 1);
-    arguments[strcspn(command_buffer, "\n")] = '\0';
     if(strncmp(command, "exit", 4) == 0) {
       break;
     } else if (strncmp(command, "echo", 4) == 0) {
       printf("%s", arguments);
-      free(arguments);
-      free(command);
     }else{
       printf("%s: command not found \n", command_buffer);
     }
