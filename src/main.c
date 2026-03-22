@@ -14,6 +14,11 @@ int main(int argc, char *argv[]) {
     ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 99);
     command_buffer[bytes_read] = '\0';
     command_buffer[strcspn(command_buffer, "\n")] = '\0';
+    if(strncmp(command_buffer, "exit", 4) == 0) {
+      break;
+    }else{
+      printf("%s: command not found \n", command_buffer);
+    }
     //parse the command
     // int i = 0;
     // while(command_buffer[i] != '\0') {
@@ -25,7 +30,6 @@ int main(int argc, char *argv[]) {
     //   }
     //   i++;
     // }
-    printf("%s: command not found \n", command_buffer);
   }
 
   return 0;
