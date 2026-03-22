@@ -11,26 +11,26 @@ int main(int argc, char *argv[]) {
   // TODO: Uncomment the code below to pass the first stage
   while(1) {
     printf("$ ");
-    ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 99);
+    ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 199);
     //add two arrays, one for command and the other for arguments
-    char command[10] = {0};
+    char command[100] = {0};
     char arguments[100] = {0};
     //go through bytes_read until you find a space and add everything that you parsed to command
     int i = 0;
-    while(command_buffer[i] != ' ' && i < bytes_read) {
+    while(command_buffer[i] != ' ' && command_buffer[i] != '\n' && i < bytes_read) {
       command[i] = command_buffer[i];
       i++;
     }
 
     command[i] = '\0';
     strncpy(arguments, &command_buffer[i + 1], sizeof(arguments) - 1);
-    arguments[sizeof(arguments) - 1] = '\0';
+    arguments[strcspn(arguments, "\n")] = '\0';
     if(strcmp(command, "exit") == 0) {
       break;
     } else if (strcmp(command, "echo" ) == 0) {
       printf("%s\n", arguments);
     }else{
-      printf("%s: command not found\n", command_buffer);
+      printf("%s: command not found\n", command);
     }
   }
 
