@@ -22,8 +22,10 @@ int main(int argc, char *argv[]) {
       i++;
     }
     command[i] = '\0';
+    strncpy(arguments, &command_buffer[i], sizeof(arguments) - 1);
+    arguments[strcspn(command_buffer, "\n")] = '\0';
     printf("Command: %s\n", command);
-    command_buffer[strcspn(command_buffer, "\n")] = '\0';
+    printf("Arguments: %s\n", arguments);
     if(strncmp(command, "exit", 4) == 0) {
       break;
     } else if (strncmp(command, "echo", 4) == 0) {
