@@ -13,22 +13,24 @@ int main(int argc, char *argv[]) {
     printf("$ ");
     ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 99);
     //add two arrays, one for command and the other for arguments
-    char command[10];
-    char arguments[100];
+    char command[10] = {0};
+    char arguments[100] = {0};
     //go through bytes_read until you find a space and add everything that you parsed to command
     int i = 0;
     while(command_buffer[i] != ' ' && i < bytes_read) {
       command[i] = command_buffer[i];
       i++;
     }
+
     command[i] = '\0';
     strncpy(arguments, &command_buffer[i + 1], sizeof(arguments) - 1);
-    if(strncmp(command, "exit", 4) == 0) {
+    arguments[sizeof(arguments) - 1] = '\0';
+    if(strcmp(command, "exit") == 0) {
       break;
-    } else if (strncmp(command, "echo", 4) == 0) {
-      printf("%s", arguments);
+    } else if (strcmp(command, "echo" ) == 0) {
+      printf("%s\n", arguments);
     }else{
-      printf("%s: command not found \n", command_buffer);
+      printf("%s: command not found\n", command_buffer);
     }
   }
 
