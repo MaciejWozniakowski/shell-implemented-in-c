@@ -24,12 +24,12 @@ int main(int argc, char *argv[]) {
     command[i] = '\0';
     strncpy(arguments, &command_buffer[i], sizeof(arguments) - 1);
     arguments[strcspn(command_buffer, "\n")] = '\0';
-    printf("Command: %s\n", command);
-    printf("Arguments: %s\n", arguments);
+    // printf("Command: %s\n", command);
+    // printf("Arguments: %s\n", arguments);
     if(strncmp(command, "exit", 4) == 0) {
       break;
     } else if (strncmp(command, "echo", 4) == 0) {
-      printf("%s, \n", command );
+      printf("%s\n", arguments);
     }else{
       printf("%s: command not found \n", command_buffer);
     }
