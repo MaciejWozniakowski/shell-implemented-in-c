@@ -10,7 +10,7 @@ int main(int argc, char *argv[]) {
 
   // TODO: Uncomment the code below to pass the first stage
   while(1) {
-    printf("$ ");
+    printf("$");
     ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 199);
     //add two arrays, one for command and the other for arguments
     char command[100] = {0};
