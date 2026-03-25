@@ -3,6 +3,8 @@
 #include <string.h>
 #include <unistd.h>
 
+#include "type_command.h"
+
 int main(int argc, char *argv[]) {
   // Flush after every printf
   setbuf(stdout, NULL);
@@ -10,7 +12,7 @@ int main(int argc, char *argv[]) {
 
   // TODO: Uncomment the code below to pass the first stage
   while(1) {
-    printf("$");
+    printf("$ ");
     ssize_t bytes_read = read(STDIN_FILENO, command_buffer, 199);
     //add two arrays, one for command and the other for arguments
     char command[100] = {0};
@@ -30,6 +32,7 @@ int main(int argc, char *argv[]) {
     } else if (strcmp(command, "echo" ) == 0) {
       printf("%s\n", arguments);
     } else if (strcmp(command, "type" ) == 0) {
+      check_if_builtin(arguments);
       
     }else{
       printf("%s: command not found\n", command);
