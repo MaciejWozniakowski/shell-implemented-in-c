@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
       break;
     } else if (strcmp(command, "echo" ) == 0) {
       printf("%s\n", arguments);
+    } else if (strcmp(command, "type" ) == 0) {
+      
     }else{
       printf("%s: command not found\n", command);
     }
