@@ -1,4 +1,4 @@
-#include "type_command.h"
+#include "commands.h"
 #include <string.h>
 #include <stdio.h>
 // perpare check for commands: echo, exit, type
