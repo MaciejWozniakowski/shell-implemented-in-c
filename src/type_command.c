@@ -11,6 +11,6 @@ void check_if_builtin(char *argument){
     } else if (strcmp(argument, "type") == 0) {
         printf("%s is a shell builtin\n", argument);
     } else {
-        printf("%s: command not found\n", argument);
+        printf("%s: not found\n", argument);
     }
 }
