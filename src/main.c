@@ -3,7 +3,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include "type_command.h"
+#include "commands.h"
 
 int main(int argc, char *argv[]) {
   // Flush after every printf
