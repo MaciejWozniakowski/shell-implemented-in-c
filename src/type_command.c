@@ -1,5 +1,6 @@
 #include "type_command.h"
-
+#include <string.h>
+#include <stdio.h>
 // perpare check for commands: echo, exit, type
 
 void check_if_builtin(char *argument){
